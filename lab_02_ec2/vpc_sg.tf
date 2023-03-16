@@ -60,8 +60,4 @@ resource "aws_security_group" "sec_web" {
   lifecycle {
     create_before_destroy = true
   }
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
