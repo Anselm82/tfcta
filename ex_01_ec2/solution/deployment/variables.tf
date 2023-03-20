@@ -24,26 +24,26 @@ variable "public_cidr_blocks" {
 }
 
 variable "ingress_ports" {
-  type = map(object({
+  type = list(object({
     service  = string
     port     = string
     protocol = string
   }))
-  default = {
-    "0" = {
+  default = [
+    {
       service : "HTTP",
       port : "80",
       protocol : "tcp"
     },
-    "1" = {
+    {
       service : "SSH",
       port : "22",
       protocol : "tcp"
     },
-    "2" = {
+    {
       service : "PING",
       port : "8",
       protocol : "icmp"
     }
-  }
+  ]
 }
