@@ -21,3 +21,22 @@ data "aws_ami" "amazon_linux2_kernel_5" {
     values = ["x86_64"]
   }
 }
+
+data "aws_vpc" "vpc_id" {
+  filter {
+    name   = "tag:Equipo"
+    values = ["Athletic"]
+  }
+}
+
+data "aws_subnets" "public_subnets" {
+  filter {
+    name = "vpc-id"
+    values = [data.aws_vpc.vpc_id.id]
+  }
+  
+  filter {
+    name = "tag:tier"
+    values = ["public"]
+  }
+}

@@ -1,4 +1,5 @@
 ## AWS Specific parameters
+
 variable "region" {
   type    = string
   default = "eu-west-1"
@@ -8,7 +9,6 @@ variable "profile" {
   type    = string
   default = "cta"
 }
-
 
 ## Environment and Project
 variable "company" {
@@ -65,7 +65,7 @@ variable "db_subnets" {
 
 ## EC2 Instance Parameters
 variable "num_instances" {
-  default = 0
+  default = 2
 }
 variable "instance_type" {
   type    = string
