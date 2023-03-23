@@ -18,7 +18,7 @@ resource "aws_instance" "terraform_instance" {
      ignore_changes = [
        tags
      ]
-     prevent_destroy = true
+     prevent_destroy = false
   }
 }
 
@@ -55,18 +55,5 @@ resource "aws_security_group" "sec_ssh_ping_import" {
 
   lifecycle {
     create_before_destroy = true
-  }
-}
-
-resource "aws_instance" "importada_rafa" {
- tags = {
-  project = var.project
- }
- 
-
- lifecycle {
- ignore_changes = [
-   tags
- ]
   }
 }
