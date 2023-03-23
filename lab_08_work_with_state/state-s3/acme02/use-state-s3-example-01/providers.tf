@@ -17,29 +17,17 @@ terraform {
     encrypt        = true
     profile        = "cta"
   }
-
-  ## RAFA working example
-  # backend "s3" {
-  #   bucket = "acme02-terraform-state-975030449833-dev"
-  #   ## Note key is application specific
-  #   key            = "acme02/example-01/terraform.tfstate"
-  #   dynamodb_table = "acme02-terraform-state-locks-dev"
-  #   region         = "eu-west-1"
-  #   encrypt        = true
-  #   # profile        = "cta"
-  #   profile = "975030449833_TerraformCourse"
-  #  }
-
-  provider "aws" {
-    region  = var.region
-    profile = var.profile
-    default_tags {
-      tags = {
-        environment = var.environment
-        project     = var.project
-        created_by  = "terraform"
-        disposable  = true
-      }
+}
+provider "aws" {
+  region  = var.region
+  profile = var.profile
+  default_tags {
+    tags = {
+      environment = var.environment
+      project     = var.project
+      created_by  = "terraform"
+      disposable  = true
     }
   }
 }
+
