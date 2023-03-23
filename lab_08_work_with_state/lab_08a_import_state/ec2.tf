@@ -10,18 +10,26 @@ resource "aws_instance" "test_import" {
   }
 }
 
-resource "aws_instance" "rafatest" {
-  # (resource arguments)
+resource "aws_instance" "terraform_instance" {
+  ami           = "ami-0779c326801d5a843"
+  instance_type = "t2.micro"  
+  vpc_security_group_ids = [aws_security_group.sec_ssh_ping_import.id]
+  lifecycle {
+     ignore_changes = [
+       tags
+     ]
+     prevent_destroy = true
+  }
 }
 
-resource "aws_instance" "rafatest2" {
-  # (resource arguments)
-}
+# resource "aws_instance" "rafatest2" {
+#   # (resource arguments)
+# }
  
 # Security group: allow ssh and ICMP ping from allowed external subnets
 resource "aws_security_group" "sec_ssh_ping_import" {
   vpc_id = data.aws_vpc.def_vpc.id
-  name   = "sec-ssh-ping-import"
+  name   = "${local.name_suffix}-sg"
   ingress {
     description = "SSH from specific addresses"
     from_port   = 22

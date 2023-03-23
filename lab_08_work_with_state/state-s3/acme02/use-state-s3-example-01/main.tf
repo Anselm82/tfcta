@@ -13,7 +13,7 @@ resource "aws_instance" "test1" {
   instance_type          = var.instance_type
   subnet_id              = data.aws_subnets.def_vpc_subnets.ids[0]
   vpc_security_group_ids = [aws_security_group.sec_web.id]
-  key_name               = var.key_name
+  #key_name               = var.key_name
   tags = {
     Name = "${var.project}-test1"
   }
@@ -24,7 +24,7 @@ resource "aws_instance" "test1" {
 
 resource "aws_security_group" "sec_web" {
   vpc_id = data.aws_vpc.def_vpc.id
-  name   = "sec-web"
+  name   = "72886452-sec-web"
   ingress {
     description = "Temp for testing - SSH from specific addresses"
     from_port   = 22
