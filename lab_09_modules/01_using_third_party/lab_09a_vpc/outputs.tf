@@ -18,7 +18,9 @@ output "ips_privadas_de_server_priv" {
   value = aws_instance.server_priv[*].private_ip
 }
 
-
+output "ips_privadas_de_server_priv_otra" {
+  value = aws_instance.server_priv_otra[*].private_ip
+}
 
 
 
