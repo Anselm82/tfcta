@@ -34,14 +34,14 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_key_pair" "deployer" {
-  key_name   = "deployer-key"
-  public_key = file("${path.module}/key.pub")
-}
+# resource "aws_key_pair" "deployer" {
+#   key_name   = "deployer-key"
+#   public_key = file("${path.module}/key.pub")
+# }
 
 resource "aws_instance" "example" {
   ami                    = data.aws_ami.ubuntu.id
-  key_name               = aws_key_pair.deployer.key_name
+  #key_name               = aws_key_pair.deployer.key_name
   instance_type          = "t2.micro"
   # vpc_security_group_ids = [aws_security_group.sg_ssh.id]
   vpc_security_group_ids = [aws_security_group.sg_ssh.id, aws_security_group.sg_web.id]

@@ -4,6 +4,10 @@ function console() {
   terraform console
 }
 
+function ls () {
+  terraform state list
+}
+
 function enableDebug() {
     export TF_LOG_PROVIDER="DEBUG"
     export TF_LOG_PATH="terraform.log"
@@ -42,6 +46,9 @@ function destroy() {
 }
 
 case $1 in
+  ls)
+    ls
+    ;;
   console)
     console
     ;;
