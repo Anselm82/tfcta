@@ -42,7 +42,7 @@ function apply() {
 }
 
 function destroy() {
-    terraform destroy -auto-approve
+    terraform apply -destroy -auto-approve
 }
 
 case $1 in
